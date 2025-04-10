@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blueprint Sábio - Redefinir Autenticação</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #333;
+    }
+    .container {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    p {
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+    .button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 15px 0;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #2980b9;
+    }
+    .back-link {
+      color: #3498db;
+      text-decoration: none;
+      margin-top: 20px;
+      display: inline-block;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .success-message {
+      color: #27ae60;
+      font-weight: bold;
+      margin: 15px 0;
+      display: none;
+    }
+    .error-message {
+      color: #e74c3c;
+      font-weight: bold;
+      margin: 15px 0;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Redefinir Autenticação</h1>
+    
+    <p>Se você está tendo problemas para fazer login no Blueprint Sábio, use este utilitário para limpar dados de autenticação armazenados localmente.</p>
+    
+    <p>Isso pode ajudar a resolver problemas como:</p>
+    <ul style="text-align: left;">
+      <li>Falhas persistentes de login</li>
+      <li>Usuário incorreto aparecendo</li>
+      <li>Erros de token inválido</li>
+      <li>Outras falhas no processo de autenticação</li>
+    </ul>
+    
+    <button id="resetButton" class="button">Limpar Dados de Autenticação</button>
+    
+    <p id="successMessage" class="success-message">
+      Dados de autenticação removidos com sucesso! Tente fazer login novamente.
+    </p>
+    
+    <p id="errorMessage" class="error-message">
+      Ocorreu um erro ao tentar limpar os dados. Tente novamente ou limpe o navegador manualmente.
+    </p>
+    
+    <p>
+      <a href="/" class="back-link">Voltar para a Página de Login</a>
+    </p>
+  </div>
+  
+  <script>
+    document.getElementById('resetButton').addEventListener('click', function() {
+      const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
+      
+      try {
+        // Limpar localStorage
+        localStorage.clear();
+        console.log('localStorage limpo');
+        
+        // Limpar sessionStorage
+        sessionStorage.clear();
+        console.log('sessionStorage limpo');
+        
+        // Tentar excluir o banco de dados IndexedDB do Firebase
+        const deleteRequest = indexedDB.deleteDatabase('firebaseLocalStorageDb');
+        
+        deleteRequest.onsuccess = function() {
+          console.log('Banco de dados IndexedDB do Firebase excluído com sucesso');
+          successMessage.style.display = 'block';
+          errorMessage.style.display = 'none';
+          
+          // Redefinir cookies relacionados ao Firebase
+          document.cookie.split(';').forEach(function(c) {
+            if (c.trim().startsWith('firebase')) {
+              document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
+            }
+          });
+          
+          // Redefinir cookies relacionados ao blueprint-sabio
+          document.cookie.split(';').forEach(function(c) {
+            if (c.trim().startsWith('blueprint-sabio')) {
+              document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
+            }
+          });
+        };
+        
+        deleteRequest.onerror = function(event) {
+          console.error('Erro ao excluir banco de dados IndexedDB:', event.target.error);
+          // Continuar mostrando sucesso mesmo que o IndexedDB falhe
+          successMessage.style.display = 'block';
+          errorMessage.style.display = 'none';
+        };
+        
+      } catch (error) {
+        console.error('Erro ao limpar dados de autenticação:', error);
+        successMessage.style.display = 'none';
+        errorMessage.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

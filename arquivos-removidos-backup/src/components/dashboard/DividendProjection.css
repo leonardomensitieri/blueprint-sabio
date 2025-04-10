@@ -1,0 +1,306 @@
+.dividend-projection {
+  background: linear-gradient(145deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9));
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.dividend-projection h2 {
+  color: #D4AF37;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 0.8rem;
+}
+
+.dividend-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: linear-gradient(145deg, rgba(32, 32, 32, 0.9), rgba(22, 22, 22, 0.9));
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.summary-card h3 {
+  font-size: 1rem;
+  color: #AAAAAA;
+  margin-bottom: 0.5rem;
+}
+
+.summary-card p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.chart-container {
+  background: rgba(18, 18, 18, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chart-container h3 {
+  color: #D4AF37;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.monthly-projection {
+  margin-bottom: 2rem;
+}
+
+.charts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.chart-wrapper {
+  background: rgba(18, 18, 18, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%;
+}
+
+.chart-wrapper h3 {
+  color: #D4AF37;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.pie-chart {
+  grid-column: span 1;
+}
+
+.bar-chart {
+  grid-column: span 1;
+}
+
+.custom-tooltip {
+  background-color: rgba(42, 42, 42, 0.95);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.custom-tooltip .label {
+  color: #FFFFFF;
+  font-weight: bold;
+  margin: 0;
+}
+
+.custom-tooltip .percent {
+  color: #D4AF37;
+  margin: 0.5rem 0 0 0;
+}
+
+.tooltip-details {
+  margin-top: 0.8rem;
+  border-top: 1px dashed rgba(212, 175, 55, 0.3);
+  padding-top: 0.8rem;
+}
+
+.tooltip-subtitle {
+  color: #D4AF37;
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.tooltip-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.tooltip-list li {
+  color: #CCCCCC;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  white-space: nowrap;
+}
+
+.dividend-strategies {
+  background: rgba(18, 18, 18, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.dividend-strategies h3 {
+  color: #D4AF37;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.strategy-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.strategy-card {
+  background: linear-gradient(145deg, rgba(32, 32, 32, 0.7), rgba(22, 22, 22, 0.7));
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.strategy-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.strategy-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.strategy-card h4 {
+  color: #D4AF37;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.strategy-card p {
+  color: #CCCCCC;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.dividend-tips {
+  background: rgba(18, 18, 18, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.dividend-tips h3 {
+  color: #D4AF37;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.dividend-tips ul {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.dividend-tips li {
+  margin-bottom: 0.8rem;
+  padding: 1rem;
+  position: relative;
+  color: #CCCCCC;
+  background: rgba(32, 32, 32, 0.5);
+  border-radius: 8px;
+  border-left: 3px solid #D4AF37;
+  transition: transform 0.2s ease;
+}
+
+.dividend-tips li:hover {
+  transform: translateX(5px);
+  background: rgba(32, 32, 32, 0.7);
+}
+
+.dividend-tips strong {
+  color: #FFFFFF;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(212, 175, 55, 0.1);
+  border-radius: 50%;
+  border-top-color: #D4AF37;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  color: #D4AF37;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 992px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .dividend-tips ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dividend-projection {
+    padding: 1.5rem;
+  }
+  
+  .dividend-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .charts-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .strategy-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .summary-card p {
+    font-size: 1.5rem;
+  }
+}

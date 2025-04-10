@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuração de Administrador - Blueprint Sábio</title>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-functions-compat.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #d4af37;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #d4af37;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #c49b30;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    .success {
+      background-color: #e7f5e7;
+      border-left: 4px solid #4CAF50;
+      color: #2e7d32;
+    }
+    .error {
+      background-color: #fdeded;
+      border-left: 4px solid #f44336;
+      color: #c62828;
+    }
+    .loading {
+      display: none;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .spinner {
+      border: 4px solid rgba(212, 175, 55, 0.2);
+      border-radius: 50%;
+      border-top: 4px solid #d4af37;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 10px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Configuração de Administrador - Blueprint Sábio</h1>
+  
+  <div class="card">
+    <h2>Definir Administrador</h2>
+    <p>
+      Esta ferramenta permite definir um usuário como administrador no Blueprint Sábio.
+      O administrador terá acesso permanente a todos os recursos, sem necessidade de assinatura.
+    </p>
+    
+    <form id="adminForm">
+      <div class="form-group">
+        <label for="email">Email do Administrador:</label>
+        <input 
+          type="email" 
+          id="email" 
+          placeholder="email@exemplo.com" 
+          value="leonardomensitierii@gmail.com" 
+          required
+        >
+      </div>
+      
+      <button type="submit">Definir como Administrador</button>
+    </form>
+    
+    <div class="loading" id="loadingIndicator">
+      <div class="spinner"></div>
+      <p>Processando...</p>
+    </div>
+    
+    <div id="resultContainer"></div>
+  </div>
+  
+  <div class="card">
+    <h2>Instruções</h2>
+    <ol>
+      <li>Certifique-se de que o usuário já está registrado no aplicativo</li>
+      <li>Informe o email do usuário no campo acima</li>
+      <li>Clique em "Definir como Administrador"</li>
+      <li>Aguarde a confirmação de sucesso</li>
+    </ol>
+    <p><strong>Nota:</strong> Esta operação não pode ser facilmente revertida. Use com cuidado.</p>
+  </div>
+
+  <script>
+    // Configuração do Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCpZ2Xi69iDNgv9G6lMqYHQSiGmu0E-9Ho",
+      authDomain: "blueprint-sabio.firebaseapp.com",
+      projectId: "blueprint-sabio",
+      storageBucket: "blueprint-sabio.firebasestorage.app",
+      messagingSenderId: "948198115035",
+      appId: "1:948198115035:web:dafc66782289433721eefe"
+    };
+
+    // Inicializar Firebase
+    firebase.initializeApp(firebaseConfig);
+    const functions = firebase.functions();
+    
+    // Referência para o formulário e elemento de resultado
+    const adminForm = document.getElementById('adminForm');
+    const resultContainer = document.getElementById('resultContainer');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    
+    // Função para mostrar mensagem de resultado
+    function showResult(message, isSuccess) {
+      resultContainer.innerHTML = `<div class="result ${isSuccess ? 'success' : 'error'}">${message}</div>`;
+      loadingIndicator.style.display = 'none';
+    }
+    
+    // Manipulador de envio do formulário
+    adminForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Obter email do formulário
+      const email = document.getElementById('email').value.trim();
+      
+      if (!email) {
+        showResult('Por favor, forneça um email válido.', false);
+        return;
+      }
+      
+      // Mostrar indicador de carregamento
+      loadingIndicator.style.display = 'block';
+      resultContainer.innerHTML = '';
+      
+      try {
+        // Chamar a função Firebase
+        const setAdminFunction = firebase.functions().httpsCallable('setAdminUser');
+        const result = await setAdminFunction({ email });
+        
+        // Mostrar mensagem de sucesso
+        showResult(`✅ ${result.data.message}`, true);
+      } catch (error) {
+        // Mostrar mensagem de erro
+        showResult(`❌ Erro: ${error.message}`, false);
+        console.error('Erro completo:', error);
+      }
+    });
+  </script>
+</body>
+</html>

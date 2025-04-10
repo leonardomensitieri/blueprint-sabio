@@ -1,0 +1,278 @@
+.stock-portfolio {
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stock-portfolio h2 {
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-size: 1.8rem;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 0.8rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Formulário de adição */
+.add-stock-form {
+  margin-bottom: 2rem;
+  padding: 1.2rem;
+  background-color: #f5f9ff;
+  border-radius: 6px;
+  border: 1px solid #e3f2fd;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 150px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  color: #546e7a;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 0.7rem;
+  border: 1px solid #cfd8dc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #2196f3;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.add-button {
+  padding: 0.7rem 1.5rem;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  height: 40px;
+  align-self: flex-end;
+}
+
+.add-button:hover {
+  background-color: #1565c0;
+}
+
+.add-button:disabled {
+  background-color: #90caf9;
+  cursor: not-allowed;
+}
+
+/* Resumo do portfólio */
+.portfolio-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  flex: 1;
+  min-width: 200px;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.summary-card h3 {
+  font-size: 0.95rem;
+  color: #546e7a;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.summary-card p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1976d2;
+  margin: 0;
+}
+
+/* Tabela de ações */
+.stocks-table-container {
+  margin-bottom: 2rem;
+}
+
+.stocks-table-container h3 {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.stocks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.stocks-table th {
+  background-color: #f5f9ff;
+  color: #546e7a;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.8rem;
+  border-bottom: 2px solid #e3f2fd;
+}
+
+.stocks-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #eceff1;
+}
+
+.stocks-table tr:hover {
+  background-color: #f5f9ff;
+}
+
+.remove-button {
+  background-color: #ef5350;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.remove-button:hover {
+  background-color: #e53935;
+}
+
+.remove-button:disabled {
+  background-color: #ffcdd2;
+  cursor: not-allowed;
+}
+
+/* Loading e estados vazios */
+.loading-indicator {
+  text-align: center;
+  padding: 2rem 0;
+  color: #546e7a;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 1rem;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-portfolio {
+  padding: 2rem;
+  text-align: center;
+  background-color: #f5f9ff;
+  border-radius: 6px;
+  color: #546e7a;
+}
+
+.empty-portfolio p:first-child {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.empty-portfolio p:last-child {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Seção de atualização */
+.refresh-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.refresh-button {
+  padding: 0.6rem 1.2rem;
+  background-color: #78909c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.refresh-button:hover {
+  background-color: #607d8b;
+}
+
+.refresh-button:disabled {
+  background-color: #cfd8dc;
+  cursor: not-allowed;
+}
+
+.last-update {
+  font-size: 0.85rem;
+  color: #78909c;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .form-group {
+    width: 100%;
+  }
+  
+  .add-button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  .stocks-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .portfolio-summary {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Função para verificar se o usuário está autenticado
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Função para verificar se o usuário é dono do documento
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Regras para usuários
+    match /users/{userId} {
+      // Usuários podem ler e atualizar seus próprios dados
+      allow read, write: if isOwner(userId);
+      
+      // Subcoleção financialData
+      match /financialData/{document=**} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      // Outras subcoleções
+      match /{subcollection}/{document=**} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+    
+    // Dados fundamentais são acessíveis para leitura por usuários autenticados
+    match /stocksFundamentals/{ticker} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated(); // Temporariamente permitindo escrita para todos
+    }
+    
+    // Dados temporários para testes
+    match /_connection_test/{document=**} {
+      allow read, write: if true;
+    }
+    
+    // Configurações do sistema
+    match /system/{document=**} {
+      allow read: if isAuthenticated();
+    }
+    
+    // Temporariamente permitindo acesso a todos os dados para depuração
+    // REMOVER ESTA REGRA ANTES DE IR PARA PRODUÇÃO!
+    match /{document=**} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}

@@ -1,0 +1,268 @@
+.investment-checklist {
+  background: linear-gradient(145deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9));
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  color: #FFFFFF;
+  margin-bottom: 2rem;
+}
+
+.checklist-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.checklist-header h2 {
+  color: #D4AF37;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.checklist-header p {
+  color: #AAAAAA;
+  margin-bottom: 1.5rem;
+}
+
+.progress-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4AF37 0%, #BE9B30 100%);
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #D4AF37;
+  text-align: right;
+}
+
+.checklist-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .checklist-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checklist-category {
+  margin-bottom: 1.5rem;
+}
+
+.category-title {
+  background: rgba(212, 175, 55, 0.1);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  color: #D4AF37;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.category-title:hover {
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.category-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.category-arrow.open {
+  transform: rotate(180deg);
+}
+
+.category-items {
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.category-items.hidden {
+  max-height: 0;
+}
+
+.category-items.visible {
+  max-height: 1000px;
+}
+
+.checklist-item {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.item-header {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container {
+  position: relative;
+  padding-left: 30px;
+  margin-right: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #D4AF37;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.item-question {
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.item-question:hover {
+  color: #D4AF37;
+}
+
+.item-details {
+  background: rgba(18, 18, 18, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: fit-content;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  position: sticky;
+  top: 20px;
+}
+
+.item-details h3 {
+  color: #D4AF37;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.item-explanation {
+  color: #DDDDDD;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.item-status {
+  padding: 0.7rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.item-status.checked {
+  background: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.5);
+  color: #4CAF50;
+}
+
+.item-status.unchecked {
+  background: rgba(244, 67, 54, 0.2);
+  border: 1px solid rgba(244, 67, 54, 0.5);
+  color: #F44336;
+}
+
+.toggle-status-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.toggle-status-btn.checked {
+  background: rgba(244, 67, 54, 0.3);
+  color: #F44336;
+}
+
+.toggle-status-btn.checked:hover {
+  background: rgba(244, 67, 54, 0.4);
+}
+
+.toggle-status-btn.unchecked {
+  background: rgba(76, 175, 80, 0.3);
+  color: #4CAF50;
+}
+
+.toggle-status-btn.unchecked:hover {
+  background: rgba(76, 175, 80, 0.4);
+}
+
+.no-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #888888;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.checklist-footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: #888888;
+  font-size: 0.9rem;
+}

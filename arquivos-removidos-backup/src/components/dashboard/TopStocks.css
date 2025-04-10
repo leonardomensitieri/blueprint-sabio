@@ -1,0 +1,336 @@
+.top-stocks-container {
+  background: linear-gradient(145deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9));
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  color: #FFFFFF;
+  margin-bottom: 2rem;
+}
+
+.top-stocks-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.top-stocks-header h2 {
+  color: #D4AF37;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.top-stocks-header p {
+  color: #AAAAAA;
+}
+
+.stock-groups-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.group-button {
+  padding: 0.8rem 1.2rem;
+  border-radius: 50px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.group-button:hover {
+  transform: translateY(-2px);
+}
+
+.group-button.active {
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.group-button.elite {
+  border-color: rgba(212, 175, 55, 0.4);
+  color: #D4AF37;
+}
+
+.group-button.elite.active {
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.group-button.strong-buy {
+  border-color: rgba(76, 175, 80, 0.4);
+  color: #4CAF50;
+}
+
+.group-button.strong-buy.active {
+  background: rgba(76, 175, 80, 0.2);
+}
+
+.group-button.buy {
+  border-color: rgba(33, 150, 243, 0.4);
+  color: #2196F3;
+}
+
+.group-button.buy.active {
+  background: rgba(33, 150, 243, 0.2);
+}
+
+.group-button.dividend {
+  border-color: rgba(156, 39, 176, 0.4);
+  color: #9C27B0;
+}
+
+.group-button.dividend.active {
+  background: rgba(156, 39, 176, 0.2);
+}
+
+.group-button.growth {
+  border-color: rgba(255, 152, 0, 0.4);
+  color: #FF9800;
+}
+
+.group-button.growth.active {
+  background: rgba(255, 152, 0, 0.2);
+}
+
+.stock-group {
+  display: none;
+}
+
+.stock-group.active {
+  display: block;
+}
+
+.group-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.group-header h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.group-header.elite h3 {
+  color: #D4AF37;
+}
+
+.group-header.strong-buy h3 {
+  color: #4CAF50;
+}
+
+.group-header.buy h3 {
+  color: #2196F3;
+}
+
+.group-header.dividend h3 {
+  color: #9C27B0;
+}
+
+.group-header.growth h3 {
+  color: #FF9800;
+}
+
+.group-header p {
+  color: #AAAAAA;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.stocks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stock-card {
+  background: rgba(18, 18, 18, 0.6);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stock-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.stock-card-header {
+  padding: 1.5rem;
+  background: linear-gradient(145deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9));
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.score-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.score-circle span {
+  position: relative;
+  z-index: 2;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.score-circle::after {
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background: #1A1A1A;
+  border-radius: 50%;
+}
+
+.stock-identity {
+  flex-grow: 1;
+}
+
+.stock-identity h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.stock-identity p {
+  font-size: 0.9rem;
+  color: #BBBBBB;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.sector-tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #AAAAAA;
+  font-size: 0.75rem;
+}
+
+.stock-metrics {
+  padding: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  color: #888888;
+  margin-bottom: 0.3rem;
+}
+
+.metric-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.price {
+  color: #FFFFFF;
+}
+
+.target {
+  color: #D4AF37;
+}
+
+.positive {
+  color: #4CAF50;
+}
+
+.negative {
+  color: #F44336;
+}
+
+.dividend {
+  color: #9C27B0;
+}
+
+.stock-footer {
+  padding: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.investment-simulation p {
+  font-size: 0.85rem;
+  color: #AAAAAA;
+  margin-bottom: 0.8rem;
+}
+
+.simulation-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.simulation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.simulation-label {
+  font-size: 0.85rem;
+  color: #BBBBBB;
+}
+
+.simulation-value {
+  font-weight: 600;
+  color: #D4AF37;
+}
+
+.no-stocks {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #888888;
+}
+
+.top-stocks-footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: #888888;
+  font-size: 0.9rem;
+}
+
+.top-stocks-footer p {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .stock-groups-navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .group-button {
+    margin-bottom: 0.5rem;
+  }
+}

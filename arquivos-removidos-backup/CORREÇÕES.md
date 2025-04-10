@@ -1,0 +1,1 @@
+# Correções aplicadas\n\n1. Corrigido problema de login\n2. Desabilitado Analytics para evitar erros\n3. Adicionados dados de exemplo para testes\n4. Melhorada API de cotações\n5. Corrigido fluxo de navegação

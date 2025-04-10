@@ -1,0 +1,56 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Função auxiliar para verificar se o usuário está autenticado
+    function isAutenticado() {
+      return request.auth != null;
+    }
+    
+    // Função auxiliar para verificar se o usuário é dono do documento
+    function isDono(userId) {
+      return isAutenticado() && request.auth.uid == userId;
+    }
+    
+    // Função auxiliar para verificar se o usuário é admin
+    function isAdmin() {
+      return isAutenticado() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Permitir acesso aos documentos de usuário apenas para o próprio usuário
+    match /users/{userId} {
+      allow get, update: if isDono(userId);
+      allow list, create, delete: if isAdmin();
+      
+      // Dados financeiros - apenas o usuário pode ler/escrever
+      match /financialData/{docId} {
+        allow read, write: if isDono(userId);
+      }
+    }
+    
+    // Configurações globais - apenas admin pode escrever, todos podem ler
+    match /configuracoes/{docId} {
+      allow read: if isAutenticado();
+      allow write: if isAdmin();
+    }
+    
+    // Dados de produtos - todos podem ler, apenas admin pode escrever
+    match /produtos/{produtoId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Dados públicos de análise - todos podem ler
+    match /analises/{analiseId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Dados de tickers - todos podem ler
+    match /tickers/{tickerId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

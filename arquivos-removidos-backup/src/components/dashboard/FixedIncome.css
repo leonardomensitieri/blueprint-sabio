@@ -1,0 +1,272 @@
+.fixed-income {
+  background: linear-gradient(145deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9));
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.fixed-income h2 {
+  color: #D4AF37;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 0.8rem;
+}
+
+.error-message {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #F44336;
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #F44336;
+}
+
+.fixed-income-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background: rgba(18, 18, 18, 0.5);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  color: #AAAAAA;
+  font-size: 0.9rem;
+}
+
+.input-with-prefix {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-prefix {
+  position: absolute;
+  left: 12px;
+  color: #AAAAAA;
+  font-size: 0.9rem;
+}
+
+.fixed-income input {
+  width: 100%;
+  padding: 0.8rem;
+  padding-left: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(18, 18, 18, 0.8);
+  color: #FFFFFF;
+  font-size: 1rem;
+}
+
+.fixed-income select {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(18, 18, 18, 0.8);
+  color: #FFFFFF;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.fixed-income input:focus, .fixed-income select:focus {
+  outline: none;
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+}
+
+.cdi-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cdi-rate, .tax-info {
+  background: rgba(18, 18, 18, 0.5);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cdi-rate h3, .tax-info h3 {
+  color: #AAAAAA;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cdi-rate p, .tax-info p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #D4AF37;
+  margin-bottom: 1rem;
+}
+
+.tax-period {
+  font-size: 0.9rem;
+  color: #AAAAAA;
+}
+
+.refresh-button {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.3) 0%, rgba(76, 175, 80, 0.5) 100%);
+  color: white;
+  border: 1px solid rgba(76, 175, 80, 0.6);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.refresh-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.4) 0%, rgba(76, 175, 80, 0.6) 100%);
+  transform: translateY(-2px);
+}
+
+.refresh-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.simulations-container {
+  margin-bottom: 2rem;
+}
+
+.simulations-container h3 {
+  color: #D4AF37;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.simulations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.simulation-card {
+  background: linear-gradient(145deg, rgba(32, 32, 32, 0.9), rgba(22, 22, 22, 0.9));
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.simulation-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.simulation-header h4 {
+  color: #FFFFFF;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.net-yield {
+  color: #4CAF50;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.income-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.income-item .label {
+  color: #AAAAAA;
+}
+
+.income-item .value {
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.fixed-income-info {
+  background: rgba(18, 18, 18, 0.5);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fixed-income-info h3 {
+  color: #D4AF37;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.fixed-income-info p {
+  color: #CCCCCC;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.tax-table {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tax-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.tax-row.header {
+  background: rgba(212, 175, 55, 0.2);
+  font-weight: bold;
+  color: #D4AF37;
+}
+
+.tax-row div {
+  padding: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tax-row:last-child div {
+  border-bottom: none;
+}
+
+.tax-free-info {
+  background: rgba(33, 150, 243, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  border-left: 4px solid #2196F3;
+}
+
+.tax-free-info h4 {
+  color: #2196F3;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.tax-free-info p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .fixed-income {
+    padding: 1.5rem;
+  }
+  
+  .fixed-income-form, .cdi-info {
+    grid-template-columns: 1fr;
+  }
+}

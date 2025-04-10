@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Blueprint Sábio - Planilha dos Bilionários"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Blueprint Sábio</title>
+    
+    <!-- Inicialização rápida para garantir que Firebase inicializa corretamente -->
+    <script>
+      // Verificar e limpar armazenamento problemático se necessário
+      if (localStorage.getItem('firebase:auth:forceRefresh') === 'true') {
+        console.log('Limpando dados de autenticação problemáticos...');
+        localStorage.removeItem('firebase:auth:forceRefresh');
+        sessionStorage.clear();
+      }
+      
+      // Verificar se há problemas de IndexedDB
+      const checkAndFixDBs = () => {
+        try {
+          // Verificar se IndexedDB está disponível
+          if ('indexedDB' in window) {
+            // Listar bancos existentes
+            indexedDB.databases().then(dbs => {
+              console.log('IndexedDB databases encontrados:', dbs.map(db => db.name));
+            }).catch(err => {
+              console.error('Erro ao listar bancos IndexedDB:', err);
+            });
+          }
+        } catch (e) {
+          console.error('Erro ao verificar IndexedDB:', e);
+        }
+      };
+      
+      // Executar verificação quando a página for carregada
+      window.addEventListener('load', checkAndFixDBs);
+    </script>
+  </head>
+  <body>
+    <noscript>Você precisa habilitar JavaScript para visualizar este site.</noscript>
+    <div id="root"></div>
+    
+    <!-- Helper para debug rápido -->
+    <script>
+      window.resetAuthData = function() {
+        try {
+          console.log('Tentando limpar dados de autenticação do navegador...');
+          localStorage.clear();
+          sessionStorage.clear();
+          
+          try {
+            indexedDB.deleteDatabase('firebaseLocalStorageDb');
+            console.log('Banco de dados do Firebase excluído');
+          } catch (e) {
+            console.warn('Erro ao excluir banco de dados:', e);
+          }
+          
+          alert('Dados de autenticação limpos. A página será recarregada.');
+          window.location.reload();
+        } catch (error) {
+          console.error('Erro ao redefinir dados de autenticação:', error);
+          alert('Erro ao limpar dados: ' + error.message);
+        }
+      };
+    </script>
+  </body>
+</html>

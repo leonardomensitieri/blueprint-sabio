@@ -1,0 +1,165 @@
+/* Estilos para o componente MSI - Modo Sábio de Investir */
+
+.wisdom-mode {
+  font-family: 'Inter', 'Roboto', sans-serif;
+  color: var(--text-light);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+.wisdom-mode h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.wisdom-intro {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: var(--text-dim);
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+.wisdom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.wisdom-card {
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wisdom-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.wisdom-header {
+  background-color: var(--bg-darker);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.wisdom-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wisdom-header h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.wisdom-content {
+  padding: 1.5rem;
+}
+
+.wisdom-content h4 {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 1.25rem 0 0.5rem 0;
+}
+
+.wisdom-content h4:first-child {
+  margin-top: 0;
+}
+
+.wisdom-content p {
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  font-size: 0.95rem;
+}
+
+.wisdom-content ul {
+  padding-left: 1.25rem;
+  margin: 0.75rem 0 1rem 0;
+}
+
+.wisdom-content li {
+  margin-bottom: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+.wisdom-content strong {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.tips-list li {
+  margin-bottom: 1rem;
+}
+
+.highlighted-tip {
+  background-color: rgba(99, 189, 171, 0.1);
+  border-left: 3px solid var(--primary-color);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.highlighted-tip p {
+  margin: 0;
+}
+
+.warning-tip {
+  background-color: rgba(255, 215, 0, 0.1);
+  border-left: 3px solid var(--gold);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.warning-tip p {
+  margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .wisdom-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .wisdom-card {
+    max-width: 100%;
+  }
+  
+  .wisdom-header {
+    padding: 1rem;
+  }
+  
+  .wisdom-content {
+    padding: 1rem;
+  }
+  
+  .wisdom-icon {
+    font-size: 1.5rem;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .wisdom-header h3 {
+    font-size: 1.1rem;
+  }
+}

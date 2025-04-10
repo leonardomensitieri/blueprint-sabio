@@ -1,0 +1,1 @@
+# Correções adicionais no sistema de autenticação\n\n1. Implementado login direto com credenciais pré-definidas para testes\n2. Corrigido fluxo de redefinição de senha\n3. Melhorado o sistema de registro\n4. Corrigido o teste de conexão com Firestore\n5. Removida dependência de Analytics que causava erros

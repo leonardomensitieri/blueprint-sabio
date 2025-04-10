@@ -1,0 +1,402 @@
+/* Estilos para a carteira de ações */
+
+:root {
+  --primary-color: #63BDAB;
+  --primary-dark: #3D8B7B;
+  --primary-light: #A5DBD0;
+  --bg-dark: #313844;
+  --bg-darker: #232730;
+  --bg-card: #2A3038;
+  --text-light: #FFFFFF;
+  --text-dim: #AAAAAA;
+  --gold: #FFD700;
+  --gold-light: #FFE866;
+  --positive: #63BDAB;
+  --negative: #F44336;
+  --blue: #2196F3;
+  --blue-dark: #1976D2;
+  --border-light: rgba(255, 255, 255, 0.1);
+  --tooltip-bg: rgba(42, 48, 56, 0.9);
+}
+
+.stock-portfolio {
+  max-width: 100%;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  color: var(--text-light);
+}
+
+.stock-portfolio h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+}
+
+.error-message {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: var(--negative);
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--negative);
+}
+
+/* Formulário para adicionar ações */
+.add-stock-form {
+  background-color: var(--bg-darker);
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.add-stock-form form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 180px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-dim);
+  font-size: 0.875rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+  background-color: rgba(35, 39, 48, 0.6);
+  color: var(--text-light);
+  font-size: 0.875rem;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.add-button {
+  background-color: var(--primary-color);
+  color: var(--bg-darker);
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.add-button:hover:not(:disabled) {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.add-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Sumário do portfólio */
+.portfolio-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary-card {
+  background-color: var(--bg-darker);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.summary-card h3 {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.summary-card p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.summary-card:nth-child(3) p {
+  color: var(--primary-color);
+}
+
+/* Tabela de ações */
+.stocks-table-container {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  background-color: var(--bg-card);
+  border-radius: 8px;
+}
+
+.stocks-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stocks-table th {
+  background-color: var(--bg-darker);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 500;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.875rem;
+}
+
+.stocks-table th:hover {
+  background-color: rgba(99, 189, 171, 0.1);
+}
+
+.stocks-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.875rem;
+}
+
+.stocks-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.stocks-table tbody tr:hover {
+  background-color: rgba(99, 189, 171, 0.05);
+}
+
+.remove-button {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: var(--negative);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.75rem;
+}
+
+.remove-button:hover {
+  background-color: rgba(244, 67, 54, 0.2);
+}
+
+.empty-portfolio {
+  text-align: center;
+  padding: 2.5rem 0;
+  color: var(--text-dim);
+}
+
+/* Seção de ações */
+.actions-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.refresh-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.refresh-button {
+  background-color: var(--primary-color);
+  color: var(--bg-darker);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.refresh-button:hover:not(:disabled) {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.refresh-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.last-update {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.export-button {
+  background-color: var(--blue);
+  color: var(--text-light);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.export-button:hover:not(:disabled) {
+  background-color: var(--blue-dark);
+  transform: translateY(-2px);
+}
+
+.export-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Paginação */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.pagination-button {
+  background-color: var(--blue);
+  color: var(--text-light);
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: var(--blue-dark);
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-info {
+  color: var(--text-dim);
+  font-size: 0.875rem;
+}
+
+.items-per-page {
+  background-color: var(--bg-darker);
+  color: var(--text-light);
+  border: 1px solid var(--border-light);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+/* Loading overlays */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(35, 39, 48, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(99, 189, 171, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  color: var(--text-dim);
+}
+
+.loading-indicator p {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-top: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .add-stock-form form {
+    flex-direction: column;
+  }
+  
+  .form-group {
+    width: 100%;
+  }
+  
+  .add-button {
+    width: 100%;
+  }
+  
+  .portfolio-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  .actions-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .refresh-section {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .export-button {
+    width: 100%;
+  }
+  
+  .pagination {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
