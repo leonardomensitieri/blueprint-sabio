@@ -48,8 +48,8 @@ firebase deploy --only functions
 
 ### Credenciais de Teste
 
-- Email: teste@exemplo.com
-- Senha: senha123
+- Email: leonardomensitierii@gmail.com
+- Senha: 123456
 
 ## Criado Com
 
