@@ -30,3 +30,9 @@ serviceAccountKey.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# segredos — nunca commitar
+service-account-key.json
+.env
+.env.*
+!.env.example
